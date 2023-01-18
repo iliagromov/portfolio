@@ -1,0 +1,79 @@
+## Installation
+https://habr.com/ru/post/461999/
+
+```bash
+git clone https://github.com/eustatos/wordpress-docker-dev-env.git
+```
+or, if you prefer `ssh`
+```bash
+git clone git@github.com:eustatos/wordpress-docker-dev-env.git
+```
+After
+```bash
+cd wordpress-docker-dev-env
+docker-compose up -d
+docker-compose exec -T wp-cli sh < install.sh
+
+Если есть ошибка 
+docker-compose  PermissionError(13, 'Permission denied')
+устранить её c помощью `chmod 777 /var/run/docker.sock`
+`docker-compose ps` вернет список образов
+
+```
+Open in browser `localhost:8080`
+Default admin login - `admin`
+Default admin password - `123`
+
+You can chage this and other environment variables in `site.env` and `.env`.
+
+Now you can modify or create content in folder `wp-content`.
+If you have trouble with permissions - run:
+```bash
+sudo usermod -a -G www-data $USER
+```
+
+## Customization
+
+If you don't want create default theme or/and plugin, you can modify
+`install.sh`.
+```bash
+#!/usr/bin/env bash
+
+wp core download --force --allow-root
+wp config create \
+  --dbhost=$WORDPRESS_DB_HOST \
+  --dbname=$WORDPRESS_DB_NAME \
+  --dbuser=$WORDPRESS_DB_USER \
+  --dbpass=$WORDPRESS_DB_PASSWORD \
+  --allow-root
+wp core install \
+  --title=$TITLE \
+  --url=$URL \
+  --admin_user=$ADMIN_USER \
+  --admin_password=$ADMIN_PASSWORD \
+  --admin_email=$ADMIN_EMAIL \
+# add for skip creation default themes
+  --skip-themes
+# add for skip creation default plugins
+  --skip-plugins
+  --allow-root
+```
+
+Read more about `wp core install`
+[here](https://developer.wordpress.org/cli/commands/core/install/)
+
+## Example command for create content
+Error: YIKES! It looks like you're running this as root.
+FIXED: --allow-root
+For example, if you want to develop new theme based on `underscores`
+```bash
+docker-compose exec -T wp-cli wp scaffold _s \
+  sample-theme \
+  --theme_name="Sample Theme" \
+  --author="John Doe" --allow-root
+``` 
+
+This command create folder `sample-theme` in `wp-content` and you can start to
+develop
+
+[![video tutorial](https://img.youtube.com/vi/0TQU8y6hZ30/0.jpg)](https://www.youtube.com/watch?v=0TQU8y6hZ30)
