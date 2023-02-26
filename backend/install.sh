@@ -15,4 +15,5 @@ wp core install \
   --admin_email=$ADMIN_EMAIL \
   --allow-root
 chown -R www-data:www-data wp-content
+chown -R www-data:www-data /var/www/html
 chmod -R g+w wp-content

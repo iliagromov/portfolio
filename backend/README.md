@@ -1,4 +1,6 @@
 ## Installation
+
+// TODO: сделать кеширование базы через докер 
 https://habr.com/ru/post/461999/
 
 ```bash
@@ -77,3 +79,4 @@ This command create folder `sample-theme` in `wp-content` and you can start to
 develop
 
 [![video tutorial](https://img.youtube.com/vi/0TQU8y6hZ30/0.jpg)](https://www.youtube.com/watch?v=0TQU8y6hZ30)
+
