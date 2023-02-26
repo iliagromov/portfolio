@@ -1,11 +1,11 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
-  pathPrefix: '/porfolio/frontend',
+  pathPrefix: '/portfolio',
   siteMetadata: {
     title: `frontend`,
     author: 'iliagromov',
-    siteUrl: `https://iliagromov.github.io/portfolio/`,
+    siteUrl: `https://iliagromov.github.io/`,
     blog: 'my blog',
 
   },
