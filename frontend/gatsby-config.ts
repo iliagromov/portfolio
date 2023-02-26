@@ -1,11 +1,11 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
-  pathPrefix: '/porfolio',
+  pathPrefix: '/porfolio/frontend',
   siteMetadata: {
     title: `frontend`,
-    siteUrl: `http://localhost:8080`,
     author: 'iliagromov',
+    siteUrl: `https://iliagromov.github.io/porfolio/frontend`,
     blog: 'my blog',
 
   },
@@ -25,7 +25,6 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sharp", 
     "gatsby-transformer-sharp", 
     "gatsby-plugin-sass", 
-    "gatsby-plugin-google-gtag", 
     "gatsby-plugin-sitemap", 
     {
       resolve: 'gatsby-plugin-manifest',

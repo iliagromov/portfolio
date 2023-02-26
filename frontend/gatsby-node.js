@@ -53,7 +53,7 @@ exports.createPages = async ({ graphql, actions }) => {
           // This is the $slug variable passed to blog-post.js
           slug: node.slug,
         },
-      })
-    })
-  })
+      });
+    });
+  });
 }
