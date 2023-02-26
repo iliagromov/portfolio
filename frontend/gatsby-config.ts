@@ -5,7 +5,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `frontend`,
     author: 'iliagromov',
-    siteUrl: `https://iliagromov.github.io/porfolio/frontend`,
+    siteUrl: `https://iliagromov.github.io/portfolio/`,
     blog: 'my blog',
 
   },
