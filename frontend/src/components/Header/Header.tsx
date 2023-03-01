@@ -1,54 +1,32 @@
-import React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import parse from "html-react-parser";
-import gatsbyPng from '../../images/icon.png';
+import React, { FC } from 'react';
+import { Link } from "gatsby";
 
-const Header = (isHomePage: any, ) => {
-    // const title = ' ';
-  const {
-    wp: {
-      generalSettings: { title },
-    },
-  } = useStaticQuery(graphql`
-    query LayoutQuery {
-      wp {
-        generalSettings {
-          title
-          description
-        }
-      }
-    }
-  `);
+import './style.sass';
 
-
-//   const {site } = useStaticQuery(graphql`
-//         query {
-//             site{
-//                 siteMetadata{
-//                     title
-//                     description
-//                     author
-//                     blog
-//                 }
-//             }
-//         }`
-//         );
-//         console.log('site', site)
-
+const Header: FC = () => {
     return (
   
-      <header className="global-header">
-        <img src={gatsbyPng} alt="test" />
-
-        {isHomePage ? (
-          <h1 className="main-heading">
-            <Link to="/">{parse(title)}</Link>
-          </h1>
-        ) : (
-          <Link className="header-link-home" to="/">
-            {title}
-          </Link>
-        )}
+      <header className="header">
+        <div className="wrapper">
+          <div className="header-content">
+            <nav className="header__navbar">
+              <Link className="header__navbar-link page__subtitle" to="/">
+                Ilia
+                <span className="page_bold">Gromov</span>
+              </Link>
+              <div className="header__navbar-link">
+                <a href="#skills"> Навыки</a>
+              </div>
+              <div className="header__navbar-link">
+                <a href="#skills"> Проекты</a>
+              </div>
+              <div className="header__navbar-link">
+                <a href="#skills"> Обо мне </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+       
       </header>
 
   );
