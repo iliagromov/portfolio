@@ -1,7 +1,8 @@
 import * as React from "react";
 import type { PageProps } from "gatsby";
 import { graphql } from "gatsby";
-import { Banner } from "../../../components/Banner/Banner";
+import { Banner } from "../../common/Banner/Banner";
+import Skills from "../../common/Skills/Skills";
 
 const IndexPage: React.FC<PageProps> = (data) => {
  
@@ -11,6 +12,7 @@ const IndexPage: React.FC<PageProps> = (data) => {
   return (
     <>
       <Banner/>
+      <Skills/>
       <h1>My WordPress Blog</h1>
       <h4>Posts</h4>
       <hr />

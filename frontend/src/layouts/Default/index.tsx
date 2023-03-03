@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import Header from "../../components/Header/Header";
+import Header from "../../components/common/Header/Header";
 
 const Layout = ({ children }) => {
   const {

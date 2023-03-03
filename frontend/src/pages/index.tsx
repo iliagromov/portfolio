@@ -5,7 +5,8 @@ import SEO from "../components/seo"
 import PageMain  from "../components/containers/PageMain/PageMain";
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
-  // console.log(data);
+  console.log(data.allWpPost.nodes);
+
   return (
     <Layout>
 
