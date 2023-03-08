@@ -7,7 +7,7 @@ import PageMain  from "../components/containers/PageMain/PageMain";
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
   // console.log(data.allWpPost.nodes);
-  console.log(data);
+  // console.log(data);
 
   return (
     <Layout>
@@ -33,6 +33,7 @@ export const query = graphql`
           wpFields {
             service {
               title
+              description
               image {
                 altText
                 sourceUrl
@@ -57,6 +58,7 @@ export const query = graphql`
               ... on WpProject {
                 id
                 title
+                link
                 blockSingle {
                   singleProjectBlockGroup {
                     wpFields {
@@ -89,6 +91,7 @@ export const query = graphql`
           wpFields {
             skills {
               image {
+                sourceUrl
                 altText
                 title
               }

@@ -3,42 +3,37 @@ import { StaticImage } from "gatsby-plugin-image";
 
 import './style.sass';
 
-type SkillsProps = {
-    skillsArray: Object[]
+type AdvanatagesProps = {
+    advanatagesArray: Object[]
 }
 
-const Skills: FC<SkillsProps> = (props) => {
+const Advanatages: FC<AdvanatagesProps> = (props) => {
     // console.log(props.skillsArray);
-    const skillsCount =  props.skillsArray && props.skillsArray.length;
-    const skillsRender = props.skillsArray && props.skillsArray.map((skill, i) => {
-        let imgSrc = skill.image ? skill.image.sourceUrl : '';
+    // const skillsCount =  props.skillsArray && props.skillsArray.length;
+    const advanatagesRender = props.advanatagesArray && props.advanatagesArray.map((advanatage, i) => {
         return (
-            <div className="skill" key={`skill${i}`}>
-                <div className="page__img">
-                    {/* <StaticImage  alt='HTML 5' title="HTML 5" /> */}
-                    <img src={imgSrc} alt="" />
-                </div>
-                <div className="page__subtitle">{skill.title}</div>
-            </div>
+            <li className="page__list-item" key={`skill${i}`}> <span className="page__line_before">{advanatage.title}</span></li>
         )
     });
 
     return (
-        <section className="skills isAnimate animated">
-            <div className="page__title page_transform-uppercase page_text-center">
-                <div className="page__subtitle_big">Навыки</div>
-                <h2 className="page__title_main page__title-h2 page_bold">Навыки {skillsCount}</h2>
-            </div>
-            <div className="wrapper">
-                <div className="skills-content">
-                    {skillsRender}
-                </div>
-            </div>
-        </section>
+        <section className="advantages isAnimate animated">
+								<div className="page__title page_transform-uppercase page_text-center">
+									<h2 className="page__subtitle_big">Преимущества</h2>
+									<h2 className="page__title_main page__title-h2 page_bold">Преимущества</h2>
+								</div>
+				<div className="wrapper">
+					<div className="advantages-content">
+						<ol className="page__lists">
+                                {advanatagesRender}
+						</ol>
+					</div>
+				</div>
+			</section>
     );
 }
 
 
-export default Skills;
+export default Advanatages;
 
 

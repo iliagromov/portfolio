@@ -8,13 +8,13 @@ type SkillsProps = {
 }
 
 const Skills: FC<SkillsProps> = (props) => {
-    console.log(props);
+    // console.log(props);
     const skillsCount =  props.skillsArray && props.skillsArray.length;
     const skillsRender = props.skillsArray && props.skillsArray.map((skill, i) => {
         let imgSrc = skill.image ? skill.image.sourceUrl : '';
         return (
             <div className="skill" key={`skill${i}`}>
-                <div className="page__img">
+                <div className="pagehristina cosmhristina cosmeticsetics__img">
                     {/* <StaticImage  alt='HTML 5' title="HTML 5" /> */}
                     <img src={imgSrc} alt="" />
                 </div>

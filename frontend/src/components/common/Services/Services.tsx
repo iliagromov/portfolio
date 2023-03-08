@@ -15,13 +15,13 @@ const Services: FC<ServicesProps> = (props) => {
         return (
             <div className="service"  key={`service${i}`}>
                 <div className="page__img">
-                    <img src="assets/img/shared/img-Email.png" alt="E-mail письма" title="E-mail письма"/>
+                    <img src={imgSrc} alt={service.title} title={service.title}/>
 
                     </div>
-                <h4 className="page__subtitle">E-mail письма</h4>
+                <h4 className="page__subtitle">{service.title}</h4>
                 <div className="page__description">
-                    <h4 className="page__subtitle page_text-center">E-mail письма</h4>
-                    <p className="page__text">Делаю верстку e-mail письм как для уведомления пользователя от Вашего сайта, так и для рассылки УТП</p>
+                    <h4 className="page__subtitle page_text-center">{service.title}</h4>
+                    <p className="page__text">{service.description}</p>
                 </div>
             </div>
         )

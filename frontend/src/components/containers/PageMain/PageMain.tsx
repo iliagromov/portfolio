@@ -4,6 +4,9 @@ import { graphql } from "gatsby";
 import { Banner } from "../../common/Banner/Banner";
 import Skills from "../../common/Skills/Skills";
 import Services from "../../common/Services/Services";
+import Advanatages from "../../common/Advanatages/Advanatages";
+import Projects from "../../common/Projects/Projects";
+import About from "../../common/About/About";
 
 type PageMainProps = {
   wpQueryData: {
@@ -25,8 +28,11 @@ const PageMain: React.FC<PageMainProps> = ({
   //FIXME: поправить путь
   // const skills = wpQueryData.wpPage.blockSkills?.skillsBlockGroup.wpFields?.skills;
   const skills = wpQueryData.wpPage.myskills.mySkillsBlockGroup.wpFields?.skills;
+  const service = wpQueryData.wpPage.blockServices.skillsBlockGroup.wpFields?.service;
+  const advantages = wpQueryData.wpPage.blockAdvantages.advantagesBlockGroup.wpFields?.advantages;
+  const projects = wpQueryData.wpPage.blockProjects.projectsBlockGroup.wpFields?.projects;
   // const skills = null;
-  // console.log(skills);
+  // console.log(projects);
   // console.log(wpQueryData.wpPage.blockSkills.skillsBlockGroup.wpFields.skills);
   // console.log(wpQueryData.wpPage.blockSkills.skillsBlockGroup.wpFields.skills);
   // console.log(wpQueryData.allMarkdownRemark);
@@ -36,7 +42,10 @@ const PageMain: React.FC<PageMainProps> = ({
     <>
       <Banner />
       <Skills skillsArray={skills}/>
-      <Services servicesArray={skills}/>
+      <Services servicesArray={service}/>
+      <Advanatages advanatagesArray={advantages}/>
+      <Projects projectsArray={projects}/>
+      <About />
       <h1>My WordPress Blog</h1>
       <h4>Posts</h4>
       <hr />
