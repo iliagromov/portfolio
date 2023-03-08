@@ -8,7 +8,7 @@ type SkillsProps = {
 }
 
 const Skills: FC<SkillsProps> = (props) => {
-    console.log(props);
+    // console.log(props.skillsArray);
     const skillsCount =  props.skillsArray && props.skillsArray.length;
     const skillsRender = props.skillsArray && props.skillsArray.map((skill, i) => {
         let imgSrc = skill.image ? skill.image.sourceUrl : '';

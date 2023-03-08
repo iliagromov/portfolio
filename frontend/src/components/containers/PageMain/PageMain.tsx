@@ -3,16 +3,40 @@ import type { PageProps } from "gatsby";
 import { graphql } from "gatsby";
 import { Banner } from "../../common/Banner/Banner";
 import Skills from "../../common/Skills/Skills";
+import Services from "../../common/Services/Services";
 
-const IndexPage: React.FC<PageProps> = (data) => {
- 
-  const { nodes } = data.data;
-  console.log(nodes);
-  
+type PageMainProps = {
+  wpQueryData: {
+    wpPage: Object,
+    allMarkdownRemark: {
+      nodes: []
+    },
+    allWpPost: {
+      nodes: []
+    }
+  }
+}
+
+const PageMain: React.FC<PageMainProps> = ({
+  wpQueryData
+}) => {
+
+  // const { nodes } = wpQueryData.data;
+  //FIXME: поправить путь
+  // const skills = wpQueryData.wpPage.blockSkills?.skillsBlockGroup.wpFields?.skills;
+  const skills = wpQueryData.wpPage.myskills.mySkillsBlockGroup.wpFields?.skills;
+  // const skills = null;
+  // console.log(skills);
+  // console.log(wpQueryData.wpPage.blockSkills.skillsBlockGroup.wpFields.skills);
+  // console.log(wpQueryData.wpPage.blockSkills.skillsBlockGroup.wpFields.skills);
+  // console.log(wpQueryData.allMarkdownRemark);
+  // console.log(wpQueryData.allWpPost);
+
   return (
     <>
-      <Banner/>
-      <Skills/>
+      <Banner />
+      <Skills skillsArray={skills}/>
+      <Services servicesArray={skills}/>
       <h1>My WordPress Blog</h1>
       <h4>Posts</h4>
       <hr />
@@ -43,33 +67,4 @@ const IndexPage: React.FC<PageProps> = (data) => {
     </>
   )
 }
-
-export default IndexPage;
-
-export const pageQuery = graphql`
-  query {
-    allWpPost(sort: { fields: [date] }) {
-      nodes {
-        title
-        excerpt
-        slug
-      }
-    },
-    allMarkdownRemark {
-      nodes {
-        id
-        frontmatter {
-          category
-          title
-          url
-          image {
-            id
-            childrenImageSharp {
-              gatsbyImageData(placeholder: BLURRED, width: 200, quality: 100, formats: [AUTO, AVIF, WEBP])
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+export default PageMain;

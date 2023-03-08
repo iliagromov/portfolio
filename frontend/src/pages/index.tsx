@@ -4,15 +4,17 @@ import Layout from "../layouts/Default";
 import SEO from "../components/seo"
 import PageMain  from "../components/containers/PageMain/PageMain";
 
+
 const IndexPage: React.FC<PageProps> = ({data}) => {
-  console.log(data.allWpPost.nodes);
+  // console.log(data.allWpPost.nodes);
+  console.log(data);
 
   return (
     <Layout>
 
       <SEO title="Iila Gromov" />
       <PageMain 
-      data={data.allMarkdownRemark}
+      wpQueryData={data}
       />
      
     </Layout>
@@ -21,26 +23,76 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
 
 export default IndexPage;
 
-export const pageQuery = graphql`
+export const query = graphql`
   query {
-    allWpPost(sort: { fields: [date] }) {
-      nodes {
-        title
-        excerpt
-        slug
+    wpPage(uri: {eq: "/"}) {
+      id
+      title
+      blockServices {
+        skillsBlockGroup {
+          wpFields {
+            service {
+              title
+              image {
+                altText
+                sourceUrl
+              }
+            }
+          }
+        }
       }
-    },
-    allMarkdownRemark {
-      nodes {
-        id
-        frontmatter {
-          category
-          title
-          url
-          image {
-            id
-            childrenImageSharp {
-              gatsbyImageData(placeholder: BLURRED, width: 200, quality: 100, formats: [AUTO, AVIF, WEBP])
+      blockAdvantages {
+        advantagesBlockGroup {
+          wpFields {
+            advantages {
+              title
+            }
+          }
+        }
+      }
+      blockProjects {
+        projectsBlockGroup {
+          wpFields {
+            projects {
+              ... on WpProject {
+                id
+                title
+                blockSingle {
+                  singleProjectBlockGroup {
+                    wpFields {
+                      title
+                      shortdescription
+                      miniature {
+                        altText
+                        sourceUrl
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      blockAbout {
+        aboutBlockGroup {
+          fieldGroupName
+          wpFields {
+            about {
+              description
+            }
+          }
+        }
+      }
+      myskills {
+        mySkillsBlockGroup {
+          wpFields {
+            skills {
+              image {
+                altText
+                title
+              }
+              title
             }
           }
         }
