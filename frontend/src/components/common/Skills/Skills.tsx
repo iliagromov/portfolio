@@ -2,15 +2,40 @@ import React, { FC } from 'react';
 import { StaticImage } from "gatsby-plugin-image";
 
 import './style.sass';
+import { graphql, useStaticQuery } from 'gatsby';
 
 type SkillsProps = {
-    skillsArray: Object[]
 }
 
-const Skills: FC<SkillsProps> = (props) => {
-    // console.log(props);
-    const skillsCount =  props.skillsArray && props.skillsArray.length;
-    const skillsRender = props.skillsArray && props.skillsArray.map((skill, i) => {
+const Skills: FC<SkillsProps> = () => {
+    const { wpPage } = useStaticQuery(
+        graphql` {
+          wpPage(uri: {eq: "/"}) {
+            id
+            title   
+            myskills {
+              mySkillsBlockGroup {
+                wpFields {
+                  skills {
+                    image {
+                      sourceUrl
+                      altText
+                      title
+                    }
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+    `);
+  
+  
+    const skillsCount = wpPage.myskills.mySkillsBlockGroup.wpFields.skills.length;
+    const skills = wpPage.myskills.mySkillsBlockGroup.wpFields.skills;
+
+    const skillsRender = skills && skills.map((skill: any, i: number) => {
         let imgSrc = skill.image ? skill.image.sourceUrl : '';
         return (
             <div className="skill" key={`skill${i}`}>

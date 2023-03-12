@@ -17,7 +17,7 @@ const CanvasRings: React.FC<{}> = () => {
   const ringRadiusOffset = 10;
   let ringRadius = 325;
   const waveOffset = 15;
-  const colors = document.querySelectorAll('.theme-color');
+  // const colors = document.querySelectorAll('.theme-color');
   let startAngle = 0;
 
   const maxWavesAmplitude = 17;

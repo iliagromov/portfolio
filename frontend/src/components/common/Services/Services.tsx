@@ -1,16 +1,41 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React, { FC, useEffect, useRef } from 'react';
 // import { StaticImage } from "gatsby-plugin-image";
 
 import './style.sass';
 
 type ServicesProps = {
-    servicesArray: Object[]
 }
 
 
+
 const Services: FC<ServicesProps> = (props) => {
-    // console.log(props.servicesArray);
-    const serviceRender = props.servicesArray && props.servicesArray.map((service, i) => {
+    const { wpPage } = useStaticQuery(
+        graphql` {
+          wpPage(uri: {eq: "/"}) {
+            id
+            title   
+            blockServices {
+                skillsBlockGroup {
+                wpFields {
+                    service {
+                    title
+                    description
+                    image {
+                        altText
+                        sourceUrl
+                    }
+                    }
+                }
+                }
+            }
+          }
+        }
+    `);
+  
+    const services = wpPage.blockServices.skillsBlockGroup.wpFields.service;
+   
+    const serviceRender = services && services.map((service: any, i: number) => {
         let imgSrc = service.image ? service.image.sourceUrl : '';
         return (
             <div className="service"  key={`service${i}`}>

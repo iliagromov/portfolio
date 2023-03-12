@@ -2,16 +2,31 @@ import React, { FC } from 'react';
 import { StaticImage } from "gatsby-plugin-image";
 
 import './style.sass';
-import { PageProps } from 'gatsby';
+import { graphql, PageProps, useStaticQuery } from 'gatsby';
 
 type AboutProps = {
-    aboutArray: Object[]
 }
 
-const About: FC<PageProps> = (props) => {
-    // console.log(props.skillsArray);
-    // const skillsCount =  props.skillsArray && props.skillsArray.length;
-   
+const About: FC<AboutProps> = (props) => {
+    const { wpPage  } = useStaticQuery(
+        graphql` {
+          wpPage(uri: {eq: "/"}) {
+            id
+            title   
+			blockAbout {
+				aboutBlockGroup {
+					wpFields {
+						about {
+							description
+						}
+					}
+				}
+			}
+          }
+        }
+    `);
+	const desc = wpPage.blockAbout.aboutBlockGroup.wpFields.about.description;
+	console.log(desc);
     return (
         <section className="about isAnimate animated" id="about">
 								<div className="page__title page_transform-uppercase page_text-center">

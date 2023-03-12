@@ -2,14 +2,15 @@ import React, { FC } from 'react';
 import { StaticImage } from "gatsby-plugin-image";
 
 import './style.sass';
+import { Link } from 'gatsby-link';
 
 type ProjectProps = {
-    projectsArray: Object[]
+    projectsArray: Object[],
+    
 }
 
 const Projects: FC<ProjectProps> = (props) => {
-    // console.log(props.projectsArray);
-    // const skillsCount =  props.skillsArray && props.skillsArray.length;
+    console.log(props.projectsArray);
     const projectRender = props.projectsArray && props.projectsArray.map((project, i) => {
         let fields = project.blockSingle.singleProjectBlockGroup.wpFields;
         let title = fields?.title;
@@ -19,7 +20,7 @@ const Projects: FC<ProjectProps> = (props) => {
         // console.log(fields);
         // let imgSrc = fields.miniature ? fields.miniature.sourceUrl : '';
         return (
-            <a href={project.link} className="project" key={`project${i}`}>
+            <Link to={project.link} className="project" key={`project${i}`}>
                 
                 <figure className="page__figure works__effect">
                     <img className="page__img" src={imgSrc} alt='' />
@@ -29,7 +30,7 @@ const Projects: FC<ProjectProps> = (props) => {
                         <button className="page__btn">посмотреть</button>
                     </figcaption>
                 </figure>
-            </a>
+            </Link>
         )
     });
 

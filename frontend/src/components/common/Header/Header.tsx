@@ -15,13 +15,13 @@ const Header: FC = () => {
                 <span className="page_bold">Gromov</span>
               </Link>
               <div className="header__navbar-link">
-                <a href="#skills"> Навыки</a>
+                <a href=""> Навыки</a>
               </div>
               <div className="header__navbar-link">
-                <a href="#skills"> Проекты</a>
+                <Link to="/projects">Проекты</Link>
               </div>
               <div className="header__navbar-link">
-                <a href="#skills"> Обо мне </a>
+                <Link to="/about">Обо мне</Link>
               </div>
             </nav>
           </div>

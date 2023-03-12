@@ -2,15 +2,34 @@ import React, { FC } from 'react';
 import { StaticImage } from "gatsby-plugin-image";
 
 import './style.sass';
+import { graphql, useStaticQuery } from 'gatsby';
 
 type AdvanatagesProps = {
-    advanatagesArray: Object[]
 }
 
 const Advanatages: FC<AdvanatagesProps> = (props) => {
-    // console.log(props.skillsArray);
-    // const skillsCount =  props.skillsArray && props.skillsArray.length;
-    const advanatagesRender = props.advanatagesArray && props.advanatagesArray.map((advanatage, i) => {
+    const { wpPage: { blockAdvantages: { advantagesBlockGroup: { wpFields} } } } = useStaticQuery(
+        graphql` {
+          wpPage(uri: {eq: "/"}) {
+            id
+            title   
+            blockAdvantages {
+                advantagesBlockGroup {
+                wpFields {
+                    advantages {
+                    title
+                    }
+                }
+                }
+            }
+          }
+        }
+    `);
+
+    const advantages = wpFields.advantages;
+   
+   
+    const advanatagesRender =  advantages &&  advantages.map((advanatage: any, i: number) => {
         return (
             <li className="page__list-item" key={`skill${i}`}> <span className="page__line_before">{advanatage.title}</span></li>
         )

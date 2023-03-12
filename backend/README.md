@@ -80,3 +80,5 @@ develop
 
 [![video tutorial](https://img.youtube.com/vi/0TQU8y6hZ30/0.jpg)](https://www.youtube.com/watch?v=0TQU8y6hZ30)
 
+
+ sudo chmod 777 -R ./wp-content/
