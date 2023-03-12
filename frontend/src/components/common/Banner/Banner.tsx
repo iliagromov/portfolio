@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef } from 'react';
 import { StaticImage } from "gatsby-plugin-image";
 
-import './style.sass';
+import './Banner.sass';
 
 
 const CanvasRings: React.FC<{}> = () => {
@@ -55,9 +55,10 @@ export const Banner: FC = () => {
         <div className="page__subtitle">Ilia
           <span className="page_bold">Gromov</span>
         </div>
-        <div className="page__img">
-          <StaticImage src="../../../assets/img/img-fullstack-developer.png" alt='logo' />
-        </div>
+        <h1 className="page__title">
+          <div className="page__title_first" >Full <span>developer</span></div>
+          <div>Stack</div> 
+        </h1>
       </div>
     </section>
   )

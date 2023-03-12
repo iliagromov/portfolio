@@ -16,6 +16,8 @@
 
 @font-face 
   +font($Font, $Thin)
+@font-face 
+  +font($Font, $Black)
 
 html
   scrollbar-color: $color_scrollbar-thumb $color_scrollbar-track
@@ -30,7 +32,7 @@ html
       box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1)
 
 body
-  font-family: Montserrat-Regular
+  font-family: $Regular
   color: $color_white
   background: $color_bg
 
