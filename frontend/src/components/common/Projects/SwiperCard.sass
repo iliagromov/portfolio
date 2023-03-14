@@ -1,25 +1,26 @@
+@import '../../../styles/_imports'
 
 .swiper
-    width: 240px
+    // width: 240px
     height: 320px
-
+    padding: 16px 22px
     &-slide
         display: flex
+        flex-direction: column
         align-items: center
         justify-content: center
         border-radius: 18px
         font-size: 22px
         font-weight: bold
         color: #fff
+        // background-color: $color_yellow-3
+        // background-color: $color_yellow-3
+        // background-color: rgba($color_violet, .2)
+        // background-color: rgba($color_orange, .5)
+        background-color: rgba($color_violet, .5)
 
-    &-slide:nth-child(1n)
-        background-color: rgb(206, 17, 17)
-
-    &-slide:nth-child(2n)
-        background-color: rgb(0, 140, 255)
-
-    &-slide:nth-child(3n)
-        background-color: rgb(10, 184, 111)
-
-    &-slide:nth-child(4n)
-        background-color: rgb(211, 122, 7)
+        &:nth-child(1n)
+            // background-color: rgb(206, 17, 17)
+            // background-color: rgba($color_violet, .2)
+            background-color: rgba($color_violet, .7)
+        

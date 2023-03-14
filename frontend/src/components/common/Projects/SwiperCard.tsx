@@ -20,10 +20,10 @@ type SwiperCardProps = {
 }
 
 const SwiperCard: FC<SwiperCardProps> = (props) => {
-    console.log(props.cardArray);
+    // console.log(props.cardArray);
 
     const renderSwiperSlide = props.cardArray.map((slide, i) =>{
-        console.log(slide);
+        // console.log(slide);
         const image = getImage(slide.image);
         // const img = getImage(image) выдавал ошибку
         // сработало только const img = getImage(image.childrenImageSharp[0].gatsbyImageData)

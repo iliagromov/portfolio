@@ -17,6 +17,7 @@ export const query = graphql`
           wpFields {
             projects {
               ... on WpProject {
+                date(formatString: "YYYY MM DD")
                 id
                 title
                 link
@@ -25,9 +26,26 @@ export const query = graphql`
                     wpFields {
                       title
                       shortdescription
+                      format
+                      description
+                      days
+                      sitelink
+                      task
                       miniature {
                         altText
                         sourceUrl
+                      }
+                      pages {
+                        pageTitle
+                        image {
+                          altText
+                          uri
+                          sourceUrl
+                        }
+                      }
+                      technology {
+                        name
+                        fieldGroupName
                       }
                     }
                   }
